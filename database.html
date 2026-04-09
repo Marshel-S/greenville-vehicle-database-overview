@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Greenville | Vehicle Database</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="logo"><a href="homepage.html">Greenville</a></div>
+    <ul class="nav-links">
+      <li><a href="homepage.html">Home</a></li>
+      <li>Map</li>
+      <li class="active">Vehicles</li>
+      <li>Jobs</li>
+      <li>Wiki</li>
+    </ul>
+  </nav><br>
+
+  <!-- Header -->
+  <header class="header">
+    <h1>Vehicle Database</h1>
+    <input type="text" placeholder="Search vehicle...">
+  </header>
+
+  <!-- Main -->
+  <div class="container">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <h3>Filter</h3>
+
+      <label>Brand</label>
+      <select>
+        <option>All</option>
+        <option>Falcon</option>
+        <option>Vortex</option>
+      </select>
+
+      <label>Type</label>
+      <select>
+        <option>All</option>
+        <option>SUV</option>
+        <option>Sport</option>
+        <option>Truck</option>
+      </select>
+
+      <label>Max Price</label>
+      <input type="range" min="0" max="100000">
+
+      <button>Apply</button>
+    </aside>
+
+    <!-- Content -->
+    <main class="grid">
+
+      <!-- Card -->
+      <div class="card">
+        <h2>Falcon GT</h2>
+        <p>$25,000</p>
+        <span>Top Speed: 180 mph</span>
+        <button>Details</button>
+      </div>
+
+      <div class="card">
+        <h2>Vortex X</h2>
+        <p>$40,000</p>
+        <span>Top Speed: 200 mph</span>
+        <button>Details</button>
+      </div>
+
+      <div class="card">
+        <h2>Ranger SUV</h2>
+        <p>$30,000</p>
+        <span>Top Speed: 150 mph</span>
+        <button>Details</button>
+      </div>
+
+    </main>
+  </div>
+
+</body>
+</html>
