@@ -259,7 +259,8 @@ body {
 .quick-card *,
 .quick-card-car *,
 .quick-card-map *,
-.quick-card-job * {
+.quick-card-job *,
+.quick-card-wiki * {
   position: relative;
   z-index: 2;
 }
