@@ -5,22 +5,21 @@
   <title>Greenville | Overview</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/webp" href="images/favicon.webp">
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar">
   <div class="logo"><a href="homepage.html">Greenville</a></div>
   <ul class="nav-links">
     <li class="active">Home</li>
-    <li>Map</li>
+    <li><a href="maps.html">Map</a></li>
     <li><a href="database.html">Vehicles</a></li>
-    <li>Jobs</li>
+    <li><a href="jobs.html">Jobs</a></li>
     <li>Wiki</li>
   </ul>
 </nav>
 
-  <!-- Hero -->
   <section class="hero">
   <div class="overlay"></div>
 
@@ -31,22 +30,21 @@
   </div>
 </section>
 
-  <!-- Quick Cards -->
   <section class="quick">
-    <div class="quick-card-car">
-      <h3>🚗 Vehicles</h3>
+    <div onclick="goVehicle()" class="quick-card-car">
+      <h3>Vehicles</h3>
       <p>Browse all cars</p>
     </div>
-    <div class="quick-card-map">
-      <h3>🗺️ Map</h3>
+    <div onclick="goMaps()" class="quick-card-map">
+      <h3>Map</h3>
       <p>Explore city</p>
     </div>
-    <div class="quick-card">
-      <h3>🧑‍💼 Jobs</h3>
+    <div onclick="goJobs()" class="quick-card-job">
+      <h3>Jobs</h3>
       <p>Find roles</p>
     </div>
-    <div class="quick-card">
-      <h3>📘 Wiki</h3>
+    <div onclick="goWiki()" class="quick-card-wiki">
+      <h3>Wiki</h3>
       <p>Learn more</p>
     </div>
   </section>
@@ -57,33 +55,67 @@
 
     <div class="grid">
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" loading="lazy">
         <h3>Falcon GT</h3>
         <p>$25,000</p>
       </div>
 
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" loading="lazy">
         <h3>Vortex X</h3>
         <p>$40,000</p>
       </div>
 
       <div class="card">
-        <img src="https://via.placeholder.com/300x150" loading="lazy">
         <h3>Ranger SUV</h3>
         <p>$30,000</p>
       </div>
     </div>
+    <button class="view-all-vehicle" onclick="goVehicle()">View All</button>
   </section>
 
   <!-- Updates -->
   <section class="updates">
     <h2>Latest Updates</h2>
     <div class="update-box">
-      <p>🚀 New cars added in update v1.2</p>
-      <p>🛠️ Bug fixes and improvements</p>
+      <p>Last Update Changelogs:</p><br>
+      <p>🐰Bunny needs your help finding his car parts around the map again! Talk to Bunny to get started!</p>
+      <p>🌟 1 new LICENSED limited vehicle!</p><br>
+      <p>⚠️ Running into problems? Shoot us a message with the details, and we'll do our best to help you.</p><br>
+      <p>All rights reserved. All other trademarks are property of their respective owners.</p>
     </div>
   </section>
+
+  <script>
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    navbar.classList.add('hide');
+  } else {
+    navbar.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
+
+function goVehicle() {
+  window.location.href = "/Coding/Greenville-overview-database/public/database.html";
+}
+
+function goMaps() {
+  window.location.href = "/Coding/Greenville-overview-database/public/maps.html";
+}
+
+function goJobs() {
+  window.location.href = "/Coding/Greenville-overview-database/public/jobs.html";
+}
+
+function goWiki() {
+  window.location.href = "/Coding/Greenville-overview-database/public/wiki.html";
+}
+</script>
 
 </body>
 </html>

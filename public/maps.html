@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenville | Maps</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo"><a href="homepage.html">Greenville</a></div>
+    <ul class="nav-links">
+        <li><a href="homepage.html">Home</a></li>
+        <li class="active">Map</li>
+        <li><a href="database.html">Vehicles</a></li>
+        <li><a href="jobs.html">Jobs</a></li>
+        <li>Wiki</li>
+    </ul>
+    </nav>
+
+<script>
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 100) {
+    navbar.classList.add('hide');
+  } else {
+    navbar.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
+
+</body>
+</html>

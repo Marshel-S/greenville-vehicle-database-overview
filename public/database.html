@@ -10,14 +10,14 @@
 
   <!-- Navbar -->
   <nav class="navbar">
-    <div class="logo"><a href="homepage.html">Greenville</a></div>
-    <ul class="nav-links">
-      <li><a href="homepage.html">Home</a></li>
-      <li>Map</li>
-      <li class="active">Vehicles</li>
-      <li>Jobs</li>
-      <li>Wiki</li>
-    </ul>
+  <div class="logo"><a href="homepage.html">Greenville</a></div>
+  <ul class="nav-links">
+    <li><a href="homepage.html">Home</a></li>
+    <li><a href="maps.html">Map</a></li>
+    <li class="active">Vehicles</li>
+    <li><a href="jobs.html">Jobs</a></li>
+    <li>Wiki</li>
+  </ul>
   </nav><br>
 
   <!-- Header -->
@@ -81,6 +81,23 @@
 
     </main>
   </div>
+
+  <script>
+let lastScroll = 0;
+const navbar = document.querySelector('.navbar');
+
+window.addEventListener('scroll', () => {
+  let currentScroll = window.pageYOffset;
+
+  if (currentScroll > lastScroll && currentScroll > 50) {
+    navbar.classList.add('hide');
+  } else {
+    navbar.classList.remove('hide');
+  }
+
+  lastScroll = currentScroll;
+});
+</script>
 
 </body>
 </html>

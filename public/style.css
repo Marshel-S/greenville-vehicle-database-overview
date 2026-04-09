@@ -20,6 +20,12 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  transition: transform 0.3s ease;
+  backdrop-filter: blur(10px);
+}
+
+.navbar.hide {
+  transform: translateY(-100%);
 }
 
 .logo {
@@ -184,16 +190,25 @@ body {
   color: white;
 }
 
-.quick-card::before {
+.quick-card::before,
+.quick-card-car::before,
+.quick-card-map::before,
+.quick-card-job::before,
+.quick-card-wiki::before {
   content: "";
   position: absolute;
   inset: 0;
   background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
 }
 
-.quick-card * {
-  position: relative;
-  z-index: 2;
+.quick-card:hover::before,
+.quick-card-car:hover::before,
+.quick-card-map:hover::before,
+.quick-card-job:hover::before,
+.quick-card-wiki:hover::before {
+  background: rgba(0,0,0,0.2);
+  transition: 0.3s ease;
 }
 
 .quick-card-car {
@@ -208,18 +223,6 @@ body {
   background: url("images/car.jpg") center/cover no-repeat;
 }
 
-.quick-card-car::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-}
-
-.quick-card-car * {
-  position: relative;
-  z-index: 2;
-}
-
 .quick-card-map {
   position: relative;
   padding: 100px;
@@ -231,20 +234,48 @@ body {
   background: url("images/map.webp") center/cover no-repeat;
 }
 
-.quick-card-map::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+.quick-card-job {
+  position: relative;
+  padding: 100px;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.3s;
+  overflow: hidden;
+  color: white;
+  background: url("images/job.webp") center/cover no-repeat;
 }
 
-.quick-card-map * {
+.quick-card-wiki {
+  position: relative;
+  padding: 100px;
+  border-radius: 16px;
+  text-align: center;
+  transition: 0.3s;
+  overflow: hidden;
+  color: white;
+  background: url("images/Fandom.png") center/90% auto no-repeat;
+}
+
+.quick-card *,
+.quick-card-car *,
+.quick-card-map *,
+.quick-card-job * {
   position: relative;
   z-index: 2;
 }
 
 .quick-card h3 {
   color: white;
+  transition: 0.2s ease;
+}
+
+.quick-card:hover h3,
+.quick-card-car:hover h3,
+.quick-card-map:hover h3,
+.quick-card-job:hover h3,
+.quick-card-wiki:hover h3 {
+  text-shadow: 0 0 10px rgba(17, 24, 39, 0.8);
+  transition: 0.2s ease;
 }
 
 .quick p {
@@ -252,17 +283,12 @@ body {
   margin: 8px 0
 }
 
-.quick-card:hover {
-  transform: translateY(-5px);
-}
-
-.quick-card-car:hover {
-  transform: translateY(-5px);
-  cursor: pointer;
-}
-
-.quick-card-map:hover {
-  transform: translateY(-5px);
+.quick-card:hover,
+.quick-card-car:hover,
+.quick-card-map:hover,
+.quick-card-job:hover,
+.quick-card-wiki:hover {
+  scale: calc(1.03);
   cursor: pointer;
 }
 
@@ -349,25 +375,21 @@ body {
 .grid {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .card {
   background: #111827;
   padding: 15px;
+  height: 35vh;
   border-radius: 16px;
   transition: 0.3s;
 }
 
-.card img {
-  width: 100%;
-  border-radius: 10px;
-}
-
 .card h2 {
   margin: 10px 0 5px;
-  font-size: 18px;
+  font-size: 20px !important;
 }
 
 .card p {
@@ -402,6 +424,25 @@ body {
   box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
 }
 
+.view-all-vehicle {
+  width: 100%;
+  margin-top: 20px;
+  padding: 14px;
+  border: none;
+  border-radius: 12px;
+  background: #111827;
+  color: white;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.view-all-vehicle:hover {
+  background: #154abd;
+  transition: 0.3s ease;
+}
+
 @media (max-width: 1024px) {
   .nav-links {
     gap: 20px;
@@ -428,6 +469,10 @@ body {
 
   .sidebar {
     width: 100%;
+  }
+
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
   }
 
 }
@@ -471,7 +516,8 @@ body {
 
   .quick-card,
   .quick-card-car,
-  .quick-card-map {
+  .quick-card-map,
+  .quick-card-job {
     padding: 60px 20px;
   }
 
@@ -501,7 +547,8 @@ body {
 
   .quick-card,
   .quick-card-car,
-  .quick-card-map {
+  .quick-card-map,
+  .quick-card-job {
     padding: 50px 15px;
   }
 
