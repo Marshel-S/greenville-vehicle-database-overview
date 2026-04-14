@@ -3,3 +3,13 @@ node_modules
 .env
 
 /generated/prisma
+
+# images
+/public/images
+
+# server
+app.js
+
+# prisma
+/prisma/migrations
+/prisma/schema.prisma
