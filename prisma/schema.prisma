@@ -31,5 +31,6 @@ model vehicle {
   fuel     String?
   price    Int?
   topSpeed Int
+  image    String?
   authorId Int?
 }

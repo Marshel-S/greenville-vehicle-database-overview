@@ -104,8 +104,8 @@ fetch("/api/vehicles")
         <h2>${vehicle.car_name}</h2>
         <p>$${vehicle.price}</p>
         <span>Top Speed: ${vehicle.topSpeed} MPH</span>
-        <img src="${vehicle.image || '/images/default.jpg'}" />
-        <button onclick="goDetails()">Details</button>
+        <img src="${vehicle.image || '/images/default.jpg'}" loading="lazy" />
+        <div onclick="goDetails()" class="overlay-text">View Details</div>
       `;
 
       container.appendChild(card);
