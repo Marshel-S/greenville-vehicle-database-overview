@@ -45,8 +45,16 @@
       <select>
         <option>All</option>
         <option>SUV</option>
-        <option>Sport</option>
+        <option>Sedan</option>
         <option>Truck</option>
+      </select>
+
+      <label>Category</label>
+      <select>
+        <option>All</option>
+        <option>Sport</option>
+        <option>Luxury</option>
+        <option>Hybrid</option>
       </select>
 
       <label>Max Price</label>
@@ -56,30 +64,7 @@
     </aside>
 
     <!-- Content -->
-    <main class="grid">
-
-      <!-- Card -->
-      <div class="card">
-        <h2>Falcon GT</h2>
-        <p>$25,000</p>
-        <span>Top Speed: 180 mph</span>
-        <button>Details</button>
-      </div>
-
-      <div class="card">
-        <h2>Vortex X</h2>
-        <p>$40,000</p>
-        <span>Top Speed: 200 mph</span>
-        <button>Details</button>
-      </div>
-
-      <div class="card">
-        <h2>Ranger SUV</h2>
-        <p>$30,000</p>
-        <span>Top Speed: 150 mph</span>
-        <button>Details</button>
-      </div>
-
+    <main class="grid" id="vehicle-list">
     </main>
   </div>
 
@@ -98,6 +83,26 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
+fetch("/api/vehicles")
+  .then(res => res.json())
+  .then(data => {
+    const container = document.getElementById("vehicle-list");
+
+    data.forEach(vehicle => {
+      const card = document.createElement("div");
+      card.classList.add("card");
+
+      card.innerHTML = `
+        <h2>${vehicle.car_name}</h2>
+        <p>$${vehicle.price}</p>
+        <span>Top Speed: ${vehicle.topSpeed} MPH</span>
+        <button>Details</button>
+      `;
+
+      container.appendChild(card);
+    });
+  });
 </script>
 
 </body>
