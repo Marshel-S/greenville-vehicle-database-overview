@@ -11,5 +11,4 @@ node_modules
 app.js
 
 # prisma
-/prisma/migrations
-/prisma/schema.prisma
+/prisma/
