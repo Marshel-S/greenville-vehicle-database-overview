@@ -381,6 +381,8 @@ body {
 }
 
 .card {
+  display: flex;
+  flex-direction: column;
   background: #111827;
   padding: 15px;
   height: 35vh;
@@ -395,6 +397,7 @@ body {
 
 .card p {
   color: #22c55e;
+  margin-top: -3px;
 }
 
 .card span {
@@ -402,8 +405,13 @@ body {
   opacity: 0.7;
 }
 
+.card img {
+  background-size: center/cover no-repeat;
+}
+
 .card button {
-  margin-top: 10px;
+  margin-top: auto;
+  margin-bottom: 5px;
   width: 100%;
   padding: 10px 8px;
   border: none;
@@ -421,8 +429,7 @@ body {
 }
 
 .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 15px rgba(59, 130, 246, 0.3);
+  transform: translateY(-4px);
 }
 
 .view-all-vehicle {

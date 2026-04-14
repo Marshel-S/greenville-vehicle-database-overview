@@ -28,7 +28,8 @@ model vehicle {
   brand    String
   type     String
   category String
+  fuel     String?
   price    Int?
   topSpeed Int
-  authorId Int
+  authorId Int?
 }

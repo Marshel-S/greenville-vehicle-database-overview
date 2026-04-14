@@ -57,8 +57,15 @@
         <option>Hybrid</option>
       </select>
 
+      <label>Fuel</label>
+      <select>
+        <option>All</option>
+        <option>Gasoline</option>
+        <option>Diesel</option>
+      </select>
+
       <label>Max Price</label>
-      <input type="range" min="0" max="100000">
+      <input type="range" min="0" max="10000000">
 
       <button>Apply</button>
     </aside>
@@ -97,12 +104,17 @@ fetch("/api/vehicles")
         <h2>${vehicle.car_name}</h2>
         <p>$${vehicle.price}</p>
         <span>Top Speed: ${vehicle.topSpeed} MPH</span>
-        <button>Details</button>
+        <img src="${vehicle.image || '/images/default.jpg'}" />
+        <button onclick="goDetails()">Details</button>
       `;
 
       container.appendChild(card);
     });
   });
+
+  function goDetails() {
+  window.location.href = "/details";
+}
 </script>
 
 </body>

@@ -34,6 +34,10 @@ app.get("/wiki", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "wiki.html"));
 });
 
+app.get("/details", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "details.html"));
+});
+
 app.get("/api/vehicles", async (req, res) => {
   const vehicles = await prisma.vehicle.findMany();
   res.json(vehicles);
