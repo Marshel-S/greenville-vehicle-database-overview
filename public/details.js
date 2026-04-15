@@ -7,7 +7,14 @@ const app = document.getElementById("app");
 
 async function loadCar() {
 
-  app.innerHTML = "<center><p>Loading...</p></center>";
+  app.innerHTML = `
+  <div class="loading">
+    <p>Loading Vehicle...</p>
+  </div>
+`;
+
+  const loadingEl = document.querySelector(".loading");
+
   if (!id) {
     app.innerHTML = "<h2>ID tidak ditemukan</h2>";
     return;
@@ -16,13 +23,19 @@ async function loadCar() {
   try {
     const res = await fetch(`/api/vehicles/${id}`);
 
+    loadingEl.classList.add("slow");
+
     if (!res.ok) {
       throw new Error("Data tidak ditemukan");
     }
 
     const car = await res.json();
 
-    renderCar(car);
+    loadingEl.classList.add("done");
+
+    setTimeout(() => {
+      renderCar(car);
+    }, 300);
 
   } catch (err) {
     console.error(err);
@@ -64,7 +77,7 @@ function renderCar(car) {
       </div>
 
       <div class="right-car-details">
-        <h3>Choose Color</h3>
+        <h3>Choose Colour</h3>
 
         <div class="colors">
           ${
@@ -72,28 +85,27 @@ function renderCar(car) {
               ? colors.map(color => `
                 <div 
                   class="color-box"
-                  style="background:${color}"
-                  onclick="changeColor('${color}')"
+                  style="background:${color.color}"
+                  onclick="changeColor('${color.image}', this)"
                 ></div>
               `).join("")
-              : "<p>Tidak ada warna tersedia</p>"
+              : "<p>No colour available</p>"
           }
         </div>
       </div>
-
     </div>
   `;
 }
 
-function changeColor(color) {
+window.changeColor = function(image, el) {
   const img = document.getElementById("carImage");
-  if (!img) return;
+  if (!img || !image) return;
 
   img.style.transition = "opacity 0.2s";
   img.style.opacity = 0;
 
   setTimeout(() => {
-    img.src = `/images/car-${color}.png`;
+    img.src = image;
     img.style.opacity = 1;
   }, 200);
 }
