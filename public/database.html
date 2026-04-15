@@ -9,7 +9,6 @@
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav class="navbar">
   <div class="logo"><a href="/home">Greenville</a></div>
   <ul class="nav-links">
@@ -21,16 +20,13 @@
   </ul>
   </nav><br>
 
-  <!-- Header -->
   <header class="header">
     <h1>Vehicle Database</h1>
     <input type="text" placeholder="Search vehicle...">
   </header>
 
-  <!-- Main -->
   <div class="container">
 
-    <!-- Sidebar -->
     <aside class="sidebar">
       <h3>Filter</h3>
 
@@ -70,7 +66,6 @@
       <button>Apply</button>
     </aside>
 
-    <!-- Content -->
     <main class="grid" id="vehicle-list">
     </main>
   </div>
@@ -105,7 +100,9 @@ fetch("/api/vehicles")
         <p>$${vehicle.price}</p>
         <span>Top Speed: ${vehicle.topSpeed} MPH</span>
         <img src="${vehicle.image || '/images/default.jpg'}" loading="lazy" />
-        <div onclick="goDetails()" class="overlay-text">View Details</div>
+        <a href="/details?id=${vehicle.id}+name=${encodeURIComponent(vehicle.car_name)}+category=${vehicle.category}" class="overlay-text">
+          View Details
+        </a>
       `;
 
       container.appendChild(card);
@@ -113,7 +110,7 @@ fetch("/api/vehicles")
   });
 
   function goDetails() {
-  window.location.href = "/details";
+  window.location.href = "/details?id";
 }
 </script>
 
