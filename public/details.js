@@ -39,7 +39,7 @@ async function loadCar() {
 
   } catch (err) {
     console.error(err);
-    app.innerHTML = "<h2>Data mobil tidak ditemukan 😢</h2>";
+    app.innerHTML = "<h2>Data mobil tidak ditemukan</h2>";
   }
 }
 
@@ -65,7 +65,7 @@ function renderCar(car) {
       <div class="left-car-details">
       <div class="back-button"><button onclick="goVehicle()">Return</button></div>
       <h1 class="car-name">${car.car_name}</h1>
-        <img id="carImage" src="${car.image}" alt="${car.car_name}" />
+        <img id="carImage" class="car-image" src="${car.image}" alt="${car.car_name}" />
 
         <h2>Specification</h2>
 
@@ -101,7 +101,6 @@ window.changeColor = function(image, el) {
   const img = document.getElementById("carImage");
   if (!img || !image) return;
 
-  img.style.transition = "opacity 0.2s";
   img.style.opacity = 0;
 
   setTimeout(() => {

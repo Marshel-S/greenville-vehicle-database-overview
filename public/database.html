@@ -22,7 +22,7 @@
 
   <header class="header">
     <h1>Vehicle Database</h1>
-    <input type="text" placeholder="Search vehicle...">
+    <input id="search" type="text" placeholder="Search vehicle...">
   </header>
 
   <div class="container">
@@ -31,44 +31,36 @@
       <h3>Filter</h3>
 
       <label>Brand</label>
-      <select>
-        <option>All</option>
-        <option>Falcon</option>
-        <option>Vortex</option>
-      </select>
+      <select id="brand"></select>
 
       <label>Type</label>
-      <select>
-        <option>All</option>
-        <option>SUV</option>
-        <option>Sedan</option>
-        <option>Truck</option>
-      </select>
+      <select id="type"></select>
 
       <label>Category</label>
-      <select>
-        <option>All</option>
-        <option>Sport</option>
-        <option>Luxury</option>
-        <option>Hybrid</option>
-      </select>
+      <select id="category"></select>
 
       <label>Fuel</label>
-      <select>
-        <option>All</option>
-        <option>Gasoline</option>
-        <option>Diesel</option>
-      </select>
+      <select id="fuel"></select><br>
 
       <label>Max Price</label>
-      <input type="range" min="0" max="10000000">
+      <select id="sort">
+        <option value="">Default</option>
+        <option value="low-high">Price: Low to High</option>
+        <option value="high-low">Price: High to Low</option>
+      </select>
 
-      <button>Apply</button>
+      <input id="price" type="range" min="0" max="10000000">
+      <span id="priceValue"></span>
+
+      <button id="apply">Apply</button>
+      <div id="vehicleList"></div>
     </aside>
 
     <main class="grid" id="vehicle-list">
-    </main>
+      <div id="loading" class="loading">
+    <p>Loading vehicles List...</p>
   </div>
+  </main>
 
   <script>
 let lastScroll = 0;
@@ -86,10 +78,16 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-fetch("/api/vehicles")
-  .then(res => res.json())
-  .then(data => {
-    const container = document.getElementById("vehicle-list");
+  const container = document.getElementById("vehicle-list");
+  const loading = document.getElementById("loading");
+
+  fetch("/api/vehicles")
+    .then(res => res.json())
+    .then(data => {
+
+    loading.style.display = "none";
+
+    container.innerHTML = "";
 
     data.forEach(vehicle => {
       const card = document.createElement("div");
@@ -107,6 +105,10 @@ fetch("/api/vehicles")
 
       container.appendChild(card);
     });
+  })
+  .catch(err => {
+    loading.innerHTML = "<p>Failed to load vehicles</p>";
+    console.error(err);
   });
 
   function goDetails() {
@@ -115,4 +117,5 @@ fetch("/api/vehicles")
 </script>
 
 </body>
+<script src="filter.js"></script>
 </html>
