@@ -54,8 +54,6 @@ function populateFilters(vehicles) {
 }
 
 function filterVehicles() {
-  console.log("FILTER JALAN");
-
   const brand = brandEl.value;
   const type = typeEl.value;
   const category = categoryEl.value;

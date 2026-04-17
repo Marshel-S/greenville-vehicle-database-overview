@@ -20,13 +20,35 @@
     </ul>
     </nav>
 
-    <center><h1>Spawn Point</h1>Choose your Favorite</center>
-    <div class="map">
-      <div class="card">
-        <h3>Falcon GT</h3>
-        <p>$25,000</p>
-      </div>
+    <div class="spawnhead">
+      <h1>Spawn Point</h1>
+      <p>You can choose the spot where would you stand for the first time you play!</p>
     </div>
+
+    <section class="quick-map">
+      <div class="spawn-container">
+      <div class="quick-card-dealer">
+        <h3><a href="/spawn?id=${maps.place_id}+name=${encodeURIComponent(maps.place_name)}+category=${maps.place_category}" class="overlay-text">
+        </a>Roadmap Dealership</h3>
+        <p>Default Set Spawn</p>
+      </div>
+
+      <div class="quick-card-rivers">
+        <h3>Ron Rivers Auto Group</h3>
+        <p>Net doors to Greenville Post Office's Dealership</p>
+      </div>
+
+      <div class="quick-card-horton">
+        <h3>Horton City</h3>
+        <p>Small town next to the town of Greenville</p>
+      </div>
+
+      <div class="quick-card-brookmere">
+        <h3>Brookmere Autos</h3>
+        <p>Brookmere (town)</p>
+      </div>
+      </div>
+    </section>
 
 <script>
 let lastScroll = 0;
@@ -43,6 +65,10 @@ window.addEventListener('scroll', () => {
 
   lastScroll = currentScroll;
 });
+
+function goMaps() {
+  window.location.href = "/spawn?id";
+}
 </script>
 
 </body>
