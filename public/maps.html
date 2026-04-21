@@ -27,27 +27,56 @@
 
     <section class="quick-map">
       <div class="spawn-container" id="maps-list">
-      <div onclick="goRoadmap()" class="quick-card-dealer" data-name="Roadmap Dealership" data-category="dealer">
+      <div onclick="goRoadmap()" class="quick-card" id="quick-card-roadmap" data-name="Roadmap Dealership" data-category="dealer">
         <h3>Roadmap Dealership</h3>
         <p>Default Set Spawn</p>
       </div>
 
-      <div class="quick-card-rivers" data-name="Ron Rivers Auto Group" data-category="dealer">
+      <div onclick="goRivers()" class="quick-card" id="quick-card-rivers" data-name="Ron Rivers Auto Group" data-category="dealer">
         <h3>Ron Rivers Auto Group</h3>
-        <p>Net doors to Greenville Post Office's Dealership</p>
+        <p>Next doors to Greenville Post Office's Dealership</p>
       </div>
 
-      <div class="quick-card-horton" data-name="Horton City" data-category="dealer">
+      <div class="quick-card" id="quick-card-horton" data-name="Horton City" data-category="dealer">
         <h3>Horton City</h3>
         <p>Small town next to the town of Greenville</p>
       </div>
 
-      <div class="quick-card-brookmere" data-name="Brookmere Autos" data-category="dealer">
+      <div class="quick-card" id="quick-card-brookmere" data-name="Brookmere Autos" data-category="dealer">
         <h3>Brookmere Autos</h3>
         <p>Brookmere (town)</p>
       </div>
       </div>
-    </section>    
+    </section>
+
+    <div class="spawnhead">
+      <h1>Neighbourhood Houses</h1>
+      <p>Bring your life to the best living place</p>
+    </div>
+    
+    <section class="quick-map">
+      <div class="spawn-container" id="maps-list">
+      <div class="quick-card" data-name="Roadmap Dealership" data-category="dealer">
+        <h3>Roadmap Dealership</h3>
+        <p>Default Set Spawn</p>
+      </div>
+
+      <div class="quick-card" data-name="Ron Rivers Auto Group" data-category="dealer">
+        <h3>Ron Rivers Auto Group</h3>
+        <p>Next doors to Greenville Post Office's Dealership</p>
+      </div>
+
+      <div class="quick-card" data-name="Horton City" data-category="dealer">
+        <h3>Horton City</h3>
+        <p>Small town next to the town of Greenville</p>
+      </div>
+
+      <div class="quick-card" data-name="Brookmere Autos" data-category="dealer">
+        <h3>Brookmere Autos</h3>
+        <p>Brookmere (town)</p>
+      </div>
+      </div>
+    </section>
 
 <script>
 let lastScroll = 0;
@@ -67,6 +96,10 @@ window.addEventListener('scroll', () => {
 
     function goRoadmap() {
       window.location.href = "/spawn-roadmap";
+    }
+
+    function goRivers() {
+      window.location.href = "/spawn-ronrivers";
     }
 </script>
 
