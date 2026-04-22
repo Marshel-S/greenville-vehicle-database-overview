@@ -26,57 +26,14 @@
     </div>
 
     <section class="quick-map">
-      <div class="spawn-container" id="maps-list">
-      <div onclick="goRoadmap()" class="quick-card" id="quick-card-roadmap" data-name="Roadmap Dealership" data-category="dealer">
-        <h3>Roadmap Dealership</h3>
-        <p>Default Set Spawn</p>
-      </div>
-
-      <div onclick="goRivers()" class="quick-card" id="quick-card-rivers" data-name="Ron Rivers Auto Group" data-category="dealer">
-        <h3>Ron Rivers Auto Group</h3>
-        <p>Next doors to Greenville Post Office's Dealership</p>
-      </div>
-
-      <div class="quick-card" id="quick-card-horton" data-name="Horton City" data-category="dealer">
-        <h3>Horton City</h3>
-        <p>Small town next to the town of Greenville</p>
-      </div>
-
-      <div class="quick-card" id="quick-card-brookmere" data-name="Brookmere Autos" data-category="dealer">
-        <h3>Brookmere Autos</h3>
-        <p>Brookmere (town)</p>
-      </div>
-      </div>
+      <div class="spawn-container" id="maps-list"></div>
     </section>
 
-    <div class="spawnhead">
-      <h1>Neighbourhood Houses</h1>
-      <p>Bring your life to the best living place</p>
-    </div>
-    
-    <section class="quick-map">
-      <div class="spawn-container" id="maps-list">
-      <div class="quick-card" data-name="Roadmap Dealership" data-category="dealer">
-        <h3>Roadmap Dealership</h3>
-        <p>Default Set Spawn</p>
-      </div>
-
-      <div class="quick-card" data-name="Ron Rivers Auto Group" data-category="dealer">
-        <h3>Ron Rivers Auto Group</h3>
-        <p>Next doors to Greenville Post Office's Dealership</p>
-      </div>
-
-      <div class="quick-card" data-name="Horton City" data-category="dealer">
-        <h3>Horton City</h3>
-        <p>Small town next to the town of Greenville</p>
-      </div>
-
-      <div class="quick-card" data-name="Brookmere Autos" data-category="dealer">
-        <h3>Brookmere Autos</h3>
-        <p>Brookmere (town)</p>
-      </div>
-      </div>
-    </section>
+    <main class="grid" id="maps-list">
+      <div id="loading" class="loading">
+    <p>Loading Maps List...</p>
+  </div>
+  </main>
 
 <script>
 let lastScroll = 0;
@@ -94,16 +51,54 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-    function goRoadmap() {
-      window.location.href = "/spawn-roadmap";
+window.addEventListener("DOMContentLoaded", async () => {
+  try {
+    const res = await fetch("/api/maps");
+    const maps = await res.json();
+
+    const container = document.getElementById("maps-list");
+
+    if (!container) {
+      console.error("maps-list tidak ditemukan");
+      return;
     }
 
-    function goRivers() {
-      window.location.href = "/spawn-ronrivers";
-    }
+    const loadingEl = document.getElementById("loading");
+    if (loadingEl) loadingEl.remove();
+
+    document.getElementById("loading")
+
+    container.innerHTML = "";
+
+    maps.forEach(map => {
+    const card = document.createElement("div");
+    card.classList.add("quick-card");
+    card.style.background = `url(/${map.place_image}) center/cover no-repeat`;
+
+    card.innerHTML = `
+      <h3>${map.place_name}</h3>
+      <p>${map.place_desc}</p>
+    `;
+
+      card.addEventListener("click", () => {
+        window.location.href = `/maps-details?id=${map.place_id}+name=${encodeURIComponent(map.place_name)}+category=${map.place_category}`;
+      });
+
+      container.appendChild(card);
+    });
+
+    loadingEl.classList.add("done");
+
+    setTimeout(() => {
+      loadingEl.remove();
+    }, 300);
+
+  } catch (err) {
+    console.error("Error load maps:", err);
+  }
+});
+
 </script>
-
-<script src="maps.js"></script>
 
 </body>
 </html>
