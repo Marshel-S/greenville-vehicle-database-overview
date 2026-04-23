@@ -573,7 +573,10 @@ body {
 
 .back-button {
   display: flex;
-  position: absolute;
+  position: fixed; /* ganti ini */
+  top: 27px;       /* jarak dari atas */
+  left: 29px;      /* jarak dari kiri */
+  z-index: 1000;
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
@@ -581,12 +584,12 @@ body {
 
 .back-button button {
   margin: 12px auto;
-  padding: 10px 15px;
+  padding: 12px 17px;
   text-decoration: none;
   background: #fff;
   border-radius: 10px;
+  border: none;
   color: #0b1120;
-  font-family: 'Poppins' sans-serif;
   font-size: 16px;
   font-weight: 500;
   transition: 0.25s ease;
@@ -594,7 +597,7 @@ body {
 
 .back-button button:hover {
   scale: calc(1.05);
-  background: #0b1120;
+  background: transparent;
   color: #fff;
   border: 2px solid #fff;
 }
@@ -859,6 +862,119 @@ body {
 .overview tbody tr:not(:last-child) td {
   border-bottom: 1px solid #f0f0f0;
   border: none;
+}
+
+.greenville-form-wrapper {
+  display: flex;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+}
+
+.left-form, .right-form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+#vehicleForm {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 30px;
+  width: 98%;
+  margin: 50px auto;
+  padding: 30px;
+  background: #111827;
+  border-radius: 16px;
+}
+
+#vehicleForm button {
+  grid-column: span 2;
+  margin-top: 18px;
+  padding: 12px;
+  background: #2563eb;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+#vehicleForm button:hover {
+  background: #1d4ed8;
+}
+
+#vehicleForm input {
+  width: 100%;
+  padding: 15px;
+  margin: 0;
+  border-radius: 8px;
+  border: 1px solid #374151;
+  background: #090e1b;
+  color: white;
+}
+
+#vehicleForm p {
+  font-size: 15px;
+}
+
+#vehicleForm input:focus {
+  outline: none;
+  border-color: #2563eb;
+}
+
+.upload-box {
+  grid-column: span 1; /* tetap di kolom kanan/kiri */
+  
+  height: calc(81px * 2 + 10px);
+  border: 2px dashed #374151;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+  transition: 0.2s;
+  background: #060b1a;
+}
+
+.upload-box:hover {
+  border-color: #2563eb;
+}
+
+.upload-file {
+  text-align: center;
+  color: #9ca3af;
+}
+
+.upload-file .upload-icon {
+  font-size: 28px;
+  font-weight: bold;
+  color: #9ca3af;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.upload-file .upload-icon:hover,
+.upload-file p:hover {
+  color: #2563eb;
+  transition: 0.2s;
+}
+
+.upload-file p {
+  font-size: 12px;
+  margin-top: 5px;
+}
+
+@media (max-width: 768px) {
+  #vehicleForm {
+    grid-template-columns: 1fr;
+  }
+
+  #vehicleForm button {
+    grid-column: span 1;
+  }
 }
   
 @keyframes shimmer {

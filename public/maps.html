@@ -20,11 +20,6 @@
     </ul>
     </nav>
 
-    <div class="spawnhead">
-      <h1>Spawn Point</h1>
-      <p>You can choose the spot where would you stand for the first time you play!</p>
-    </div>
-
     <section class="quick-map">
       <div class="spawn-container" id="maps-list"></div>
     </section>
@@ -68,7 +63,24 @@ window.addEventListener("DOMContentLoaded", async () => {
 
     document.getElementById("loading")
 
+    const category = maps.length ? maps[0].place_category : "No Category";
+
     container.innerHTML = "";
+
+    const spawnhead = document.createElement("div");
+    spawnhead.classList.add("spawnhead");
+
+    spawnhead.innerHTML = `
+      <h1>${maps[0]?.place_category || ""}</h1>
+      <p>You can choose the spot where would you stand for the first time you play!</p>
+    `;
+
+    container.appendChild(spawnhead);
+
+    const cardsContainer = document.createElement("div");
+    cardsContainer.classList.add("category");
+
+    container.appendChild(cardsContainer);
 
     maps.forEach(map => {
     const card = document.createElement("div");

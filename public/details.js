@@ -63,7 +63,7 @@ function renderCar(car) {
     <div class="details-container">
       
       <div class="left-car-details">
-      <div class="back-button"><button onclick="goVehicle()">Return</button></div>
+      <div class="back-button"><button onclick="goVehicle()"><i class="fa-solid fa-arrow-left"></i></button></div>
       <h1 class="car-name">${car.car_name}</h1>
         <img id="carImage" class="car-image" src="${car.image}" alt="${car.car_name}" />
 

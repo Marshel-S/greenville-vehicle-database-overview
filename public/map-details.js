@@ -30,11 +30,13 @@ async function loadDetails() {
     setTimeout(() => {
 
     root.innerHTML = `
+    <title>Spawnpoint | ${maps.place_name}</title>
+
     <div class="maps-details-container">
         <div class="left-maps">
             <div class="map-images">
                 <div class="back-button">
-                    <button onclick="goMaps()">Return</button>
+                    <button onclick="goMaps()"><i class="fa-solid fa-arrow-left"></i></button>
                 </div>
                 <h1>${maps.place_name}</h1>
                 <img src="${maps.place_image}" alt="">

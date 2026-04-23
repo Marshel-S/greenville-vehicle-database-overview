@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add New Vehicle</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="images/favicon.webp">
+</head>
+<body>
+    <div class="greenville-form-wrapper">
+    <form id="vehicleForm" action="/api/vehicles">
+        <div class="left-form">
+            <h2>ID</h2>
+            <input type="text" name="vehicle-id" id="id" placeholder="Insert vehicle ID" required>
+
+            <h2>Vehicle Name</h2>
+            <input type="text" name="vehicle-name" id="car_name" placeholder="Full Vehicle Name" required />
+
+            <h2>Brand</h2>
+            <input type="text" name="vehicle-brand" id="brand" placeholder="None of these one" required>
+
+            <h2>Vehicle Type</h2>
+            <input type="text" name="vehicle-type" id="type" placeholder="Based on Vehicle shape" required>
+
+            <h2>Category</h2>
+            <input type="text" name="vehicle-category" id="category" placeholder="Choose Vehicle Category" required />
+
+            <h2>Add Colour</h2>
+            <input type="text" name="vehicle-color" id="colors">
+        </div>
+
+        <div class="right-form">
+            <h2>Fuel Type</h2>
+            <input type="text" name="fuel-type" id="fuel" required>
+
+            <h2>Based Price</h2>
+            <input type="number" name="vehicle-price" id="price" required />
+
+            <h2>Top Speed (MPH)</h2>
+            <input type="number" name="top-speed" id="topSpeed" required>
+
+            <h2>Overview (.obj or .fib only)</h2>
+            <div class="upload-box">
+                <div class="upload-file">
+                    <div class="upload-icon"><i class="fa-solid fa-folder-plus"></i></div>
+                    Drag & drop your choosen file
+                </div>
+                <input type="file" name="image" id="image" hidden/>
+            </div>
+
+            <h2>Author</h2>
+            <input type="number" name="author" id="authorId" required>
+
+            <p>Column with asterisk (*) are required to fill</p>
+            <button type="submit" id="submit" value="submit">Add New Vehicle</button>
+        </div>
+    </form>
+    </div>
+
+    <script>
+        document.getElementById("vehicleForm").addEventListener("submit", async (e) => {
+        e.preventDefault();
+
+        const formData = new FormData();
+
+        formData.append("car_name", document.getElementById("car_name").value);
+        formData.append("brand", document.getElementById("brand").value);
+        formData.append("type", document.getElementById("type").value);
+        formData.append("category", document.getElementById("category").value);
+        formData.append("fuel", document.getElementById("fuel").value);
+        formData.append("colors", document.getElementById("colors").value);
+        formData.append("price", document.getElementById("price").value);
+        formData.append("topSpeed", document.getElementById("topSpeed").value);
+        formData.append("authorid", document.getElementById("authorId").value);
+
+        const fileInput = document.getElementById("image");
+        formData.append("image", fileInput.files[0]);
+
+        const res = await fetch("/api/vehicles", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await res.json();
+        console.log(data);
+
+        alert("Vehicle berhasil ditambahkan!");
+        });
+    </script>
+</body>
+</html>
