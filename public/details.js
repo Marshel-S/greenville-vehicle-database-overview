@@ -70,7 +70,7 @@ function renderCar(car) {
         <h2>Specification</h2>
 
         <div class="specs">
-          <p><strong>Top Speed:</strong><br> ${car.topSpeed} km/h</p>
+          <p><strong>Top Speed:</strong><br> ${car.topSpeed} MPH</p>
           <p><strong>Category:</strong><br> ${car.category}</p>
           <p><strong>Fuel:</strong><br> ${car.fuel}</p>
         </div>

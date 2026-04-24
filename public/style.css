@@ -724,6 +724,7 @@ body {
 
 .spawnhead {
   margin: 30px 42px;
+  z-index: 1;
 }
 
 .quick-card * {

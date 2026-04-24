@@ -20,6 +20,11 @@
     </ul>
     </nav>
 
+    <div class="spawnhead">
+      <h1></h1>
+      <p>You can choose the spot where would you stand for the first time you play!</p>
+    </div>
+
     <section class="quick-map">
       <div class="spawn-container" id="maps-list"></div>
     </section>
@@ -46,7 +51,7 @@ window.addEventListener('scroll', () => {
   lastScroll = currentScroll;
 });
 
-window.addEventListener("DOMContentLoaded", async () => {
+async function loadMaps() {
   try {
     const res = await fetch("/api/maps");
     const maps = await res.json();
@@ -59,56 +64,44 @@ window.addEventListener("DOMContentLoaded", async () => {
     }
 
     const loadingEl = document.getElementById("loading");
-    if (loadingEl) loadingEl.remove();
 
-    document.getElementById("loading")
+    const spawnheadTitle = document.querySelector(".spawnhead h1");
 
-    const category = maps.length ? maps[0].place_category : "No Category";
-
-    container.innerHTML = "";
-
-    const spawnhead = document.createElement("div");
-    spawnhead.classList.add("spawnhead");
-
-    spawnhead.innerHTML = `
-      <h1>${maps[0]?.place_category || ""}</h1>
-      <p>You can choose the spot where would you stand for the first time you play!</p>
-    `;
-
-    container.appendChild(spawnhead);
-
-    const cardsContainer = document.createElement("div");
-    cardsContainer.classList.add("category");
-
-    container.appendChild(cardsContainer);
+    if (spawnheadTitle && maps.length > 0) {
+      spawnheadTitle.textContent = maps[0].place_category;
+    }
 
     maps.forEach(map => {
-    const card = document.createElement("div");
-    card.classList.add("quick-card");
-    card.style.background = `url(/${map.place_image}) center/cover no-repeat`;
+      const card = document.createElement("div");
+      card.classList.add("quick-card");
 
-    card.innerHTML = `
-      <h3>${map.place_name}</h3>
-      <p>${map.place_desc}</p>
-    `;
+      card.style.background = `url(/${map.place_image}) center/cover no-repeat`;
+
+      card.innerHTML = `
+        <h3>${map.place_name}</h3>
+        <p>${map.place_desc}</p>
+      `;
 
       card.addEventListener("click", () => {
-        window.location.href = `/maps-details?id=${map.place_id}+name=${encodeURIComponent(map.place_name)}+category=${map.place_category}`;
+        window.location.href = `/maps-details?id=${map.place_id}&name=${encodeURIComponent(map.place_name)}&category=${map.place_category}`;
       });
 
       container.appendChild(card);
     });
 
-    loadingEl.classList.add("done");
-
-    setTimeout(() => {
-      loadingEl.remove();
-    }, 300);
+    if (loadingEl) {
+      loadingEl.classList.add("done");
+      setTimeout(() => {
+        loadingEl.remove();
+      }, 300);
+    }
 
   } catch (err) {
     console.error("Error load maps:", err);
   }
-});
+}
+
+loadMaps();
 
 </script>
 
