@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add New Vehicle</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/style=Wfnh7Lhqm0pX4">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="icon" type="image/webp" href="images/favicon.webp">
 </head>
 <body>
+    <h1 style="padding: 35px;">Add New Vehicle</h1>
     <div class="greenville-form-wrapper">
     <form id="vehicleForm" action="/api/vehicles">
         <div class="left-form">
@@ -37,10 +38,10 @@
             <input type="text" name="fuel-type" id="fuel" required>
 
             <h2>Based Price</h2>
-            <input type="number" name="vehicle-price" id="price" required />
+            <input type="number" name="vehicle-price" id="price" placeholder="Take a Range from $1.000 - 3.500.000" required />
 
             <h2>Top Speed (MPH)</h2>
-            <input type="number" name="top-speed" id="topSpeed" required>
+            <input type="number" name="top-speed" id="topSpeed" placeholder="Took from the highest Speed can reach (Sport Mode)" required>
 
             <h2>Overview (.obj or .fib only)</h2>
             <div class="upload-box" id="uploadBox">
@@ -111,12 +112,10 @@
 
     let selectedFile = null;
 
-    // klik box → buka file picker
     uploadBox.addEventListener("click", () => {
     fileInput.click();
     });
 
-    // pilih file manual
     fileInput.addEventListener("change", () => {
     if (fileInput.files.length > 0) {
         selectedFile = fileInput.files[0];
@@ -143,17 +142,25 @@
     const file = e.dataTransfer.files[0];
     if (file) {
         selectedFile = file;
-        fileInput.files = e.dataTransfer.files; // penting!
+        fileInput.files = e.dataTransfer.files;
         showFileName(file);
     }
     });
 
-    // tampilkan nama file
     function showFileName(file) {
+    if (file.type.startsWith("image/")) {
+    const previewURL = URL.createObjectURL(file);
+
     uploadText.innerHTML = `
-        <p><strong>${file.name}</strong></p>
+        <img src="${previewURL}" style="max-width:70%" />
         <small>Click or drop to change</small>
-    `;
+        `;
+    } else {
+        uploadText.innerHTML = `
+        <p><strong>${file.name}</strong></p>
+        <small>File uploaded! Click or drop to change</small>
+        `;
+    }
     }
     </script>
 </body>

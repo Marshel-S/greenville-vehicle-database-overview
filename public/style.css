@@ -866,6 +866,7 @@ body {
 }
 
 .greenville-form-wrapper {
+  margin-top: -60px;
   display: flex;
   min-height: 100vh;
   justify-content: center;
@@ -891,7 +892,7 @@ body {
 
 #vehicleForm button {
   grid-column: span 2;
-  margin-top: 18px;
+  margin-top: 12px;
   padding: 12px;
   background: #2563eb;
   border: none;
@@ -924,17 +925,20 @@ body {
   border-color: #2563eb;
 }
 
+#vehicleForm #id {
+  background: #121825;
+  color: white;
+  font-style: italic;
+}
+
 .upload-box {
-  grid-column: span 1; /* tetap di kolom kanan/kiri */
-  
+  grid-column: span 1;
   height: calc(81px * 2 + 10px);
   border: 2px dashed #374151;
   border-radius: 12px;
-
   display: flex;
   align-items: center;
   justify-content: center;
-
   cursor: pointer;
   transition: 0.2s;
   background: #060b1a;

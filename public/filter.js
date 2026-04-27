@@ -1,11 +1,5 @@
-// ======================
-// GLOBAL DATA
-// ======================
 let vehicles = [];
 
-// ======================
-// ELEMENT
-// ======================
 const brandEl = document.getElementById("brand");
 const typeEl = document.getElementById("type");
 const categoryEl = document.getElementById("category");
