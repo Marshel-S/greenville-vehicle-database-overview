@@ -1,9 +1,5 @@
 {
   "type": "module",
-  "scripts": {
-    "start": "node server.js",
-    "postinstall": "prisma generate"
-  },
   "dependencies": {
     "@prisma/client": "^6.19.3",
     "dotenv": "^17.4.2",
