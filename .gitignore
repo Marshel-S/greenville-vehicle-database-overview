@@ -4,11 +4,5 @@ node_modules
 
 /generated/prisma
 
-# images
-/public/images
-
-# server
-app.js
-
 # prisma
 /prisma/
