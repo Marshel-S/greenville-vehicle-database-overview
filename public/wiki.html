@@ -7,6 +7,373 @@
     <link rel="stylesheet" href="/style=Wfnh7Lhqm0pX4">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
     <link rel="icon" type="image/webp" href="images/favicon.webp">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+    html, body {
+    height: 100%;
+    overflow: hidden;
+    }
+
+    body {
+    background: linear-gradient(#0b1120fb, #0b1120f6), url("images/background-overview.jpg") center/cover no-repeat;
+    color: #ffffff;
+    }
+
+    /* CONTAINER */
+    .wiki-container {
+    display: flex;
+    width: 100%;
+    height: 100vh;
+    }
+
+    /* SIDEBAR */
+    .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 320px;
+    min-height: 100vh;
+    position: sticky;
+    top: 0;
+    background: rgba(15,23,42,0.6);
+    backdrop-filter: blur(10px);
+    border-right: 1px solid #414651;
+    border-radius: 0;
+    padding: 20px;
+    transition: width 0.25s ease, padding 0.25s ease;
+    overflow: hidden;
+    }
+
+    .sidebar h2::after {
+    content: "\f0c9";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 20px;
+    cursor: pointer;
+    transition: transform 0.25s ease, opacity 0.2s;
+    transform-origin: center;
+    }
+
+    /* TITLE */
+    .sidebar h2 {
+    display: flex;
+    align-items: center;
+    font-family: 'Inter', sans-serif;
+    margin: 20px 6px;
+    margin-bottom: 12px;
+    justify-content: space-between;
+    }
+
+    /* COLLAPSED STATE */
+    .sidebar.collapsed {
+    width: 70px;
+    padding-top: 40px;
+    }
+
+    /* LOGO G */
+    .sidebar.collapsed::before {
+    content: "G";
+    display: block;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    margin-bottom: 20px;
+    }
+
+    /* SEARCH ICON */
+    .sidebar.collapsed::after {
+    content: "\f002";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: block;
+    text-align: center;
+    font-size: 16px;
+    margin-bottom: 20px;
+    }
+
+    /* MENU DEFAULT */
+    .menu li {
+    list-style: none;
+    padding: 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    color: #f5f5f5;
+    }
+
+    /* HAPUS SEMUA PSEUDO DEFAULT */
+    .menu li::before {
+    content: none !important;
+    }
+
+    /* COLLAPSED MENU */
+    .sidebar.collapsed .menu li {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 10px;
+    height: 40px;
+    padding: 0;
+    font-size: 0;
+    transition: all 0.2s ease;
+    }
+
+    /* ICON BASE */
+    .sidebar.collapsed .menu li::before {
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    font-size: 18px;
+    }
+
+    .sidebar.collapsed .menu li:nth-child(1)::before {
+    content: "\e3af" !important;
+    }
+
+    .sidebar.collapsed .menu li:nth-child(2)::before {
+    content: "\e592" !important;
+    }
+
+    .sidebar.collapsed .menu li:nth-child(3)::before {
+    content: "\23" !important;
+    }
+
+    .sidebar.collapsed .menu li:hover {
+    scale: calc(1.2);
+    }
+
+    .sidebar.collapsed h2::after {
+    transform: rotate(-90deg);
+    }
+
+    /* HIDE ELEMENTS */
+    .sidebar.collapsed h2 {
+    font-size: 0;
+    margin-top: 8px;
+    margin-bottom: 26px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    }
+
+    .sidebar.collapsed .search {
+    display: none;
+    }
+
+    .sidebar.collapsed::before {
+    order: 0;
+    margin-bottom: 12px;
+    }
+
+    /* SEARCH (dibawah G) */
+    .sidebar.collapsed::after {
+    order: 1;
+    margin-bottom: 16px;
+    }
+
+    /* MENU (dibawah search) */
+    .sidebar .menu {
+    order: 2;
+    }
+
+    .menu li:hover {
+    text-decoration: underline;
+    }
+
+    .search {
+    width: 100%;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    background: transparent !important;
+    color: #414651 !important;
+    border: 1px solid #414651 !important;
+    border-radius: 10px;
+    outline: none;
+    }
+
+    .main-wrapper {
+    flex: 1 1 0;
+    display: flex;
+    justify-content: center;
+    min-width: 0;
+    overflow-y: auto;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    }
+
+    .main-wrapper::-webkit-scrollbar {
+    display: none;
+    }
+
+    /* MAIN */
+    .main {
+    width: 100%;
+    max-width: 900px;
+    padding: 40px;
+    }
+
+    /* UI */
+    .title {
+    font-family: 'Poppins', sans-serif;
+    font-size: 28px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    }
+
+    .box {
+    border: 2.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 15px 18px;
+    background: rgba(15,23,42,0.6);
+    margin-bottom: 20px;
+    }
+
+    textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    font-size: 18px;
+    resize: none;
+    height: 70px;
+    outline: none;
+    }
+
+    .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    }
+
+    .btn, .more-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    }
+
+    .btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    border: 2.5px solid rgba(255,255,255,0.1);
+    background: transparent;
+    color: rgba(255,255,255,0.55);
+    cursor: pointer;
+    font-size: 14px;
+    transition: all 0.1s ease;
+    }
+
+    .btn i {
+    font-size: 19px;
+    }
+
+    .more-btn {
+    padding: 7px 16px;
+    border-radius: 8px;
+    border: 2.5px solid rgba(255,255,255,0.1);
+    background: rgba(15,23,42,0.6);
+    font-weight: 500;
+    color: rgba(255,255,255,0.55);
+    cursor: pointer;
+    font-size: 15px;
+    transition: all 0.1s ease;
+    }
+
+    .more-btn i {
+    font-size: 15px;
+    }
+
+    .more-action {
+    margin-left: 25px;
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    }
+
+    .btn:hover,
+    .more-btn:hover {
+    background: rgba(22, 33, 59, 0.6);
+    color: #ffffffe7;
+    }
+
+    .headpost {
+    margin-top: 25px;
+    font-weight: bold;
+    }
+
+    .post {
+    margin-top: 10px;
+    border: 2.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px;
+    background: rgba(15,23,42,0.6);
+    }
+
+    .post-margin {
+    margin: 2px 5px;
+    }
+
+    .post #recommend {
+    color: rgba(255,255,255,0.65);
+    margin-bottom: 10px;
+    }
+
+    #recommend i {
+    margin-left: 5px;
+    }
+
+    .post small {
+    color: #ffffff;
+    font-weight: bold;
+    font-size: 15px;
+    }
+
+    .post #comment {
+    margin-top: 4px;
+    }
+
+    /* RIGHT */
+    .right {
+    width: 350px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    padding: 40px 20px;
+    }
+
+    .panel {
+    height: 300px;
+    border-top-left-radius: 12px;
+    border-bottom-left-radius: 12px;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+    border: 1px solid rgba(255,255,255,0.1);
+    background: rgba(15,23,42,0.6);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+    .right {
+        display: none;
+    }
+    }
+
+    @media (max-width: 800px) {
+    .sidebar {
+        display: none;
+    }
+
+    .main {
+        padding: 20px;
+    }
+    }
+  </style>
 </head>
 <body>
     <nav class="navbar">
@@ -19,5 +386,75 @@
         <li class="active">Wiki</li>
     </ul>
     </nav>
+
+    <div class="wiki-container">
+
+    <div class="sidebar">
+    <h2>Greenville Wiki</h2>
+    <input class="search" placeholder="Look for Trending topic...">
+    <ul class="menu">
+      <li>Home</li>
+      <li>Community</li>
+      <li>Hot / Trending</li>
+    </ul>
+  </div>
+
+    <div class="main-wrapper">
+        <div class="main">
+            <div class="title">Discuss</div>
+
+            <div class="box">
+            <textarea placeholder="Ask something or mention '@' to open discussion.."></textarea>
+            <div class="actions">
+                <button class="btn" id="add-file" type="file">
+                    <i class="fa-regular fa-square-plus"></i>
+                    Add file
+                </button>
+
+                <button class="btn" id="post" onclick="addPost()">Post</button>
+            </div>
+            </div>
+
+            <div class="more-action">
+            <button class="more-btn" id="discord">
+                <i class="fa-brands fa-discord"></i>
+                Discord
+            </button>
+
+            <button class="more-btn" id="twitter">
+                <i class="fa-brands fa-twitter"></i>
+                Twitter
+            </button>
+            </div>
+
+            <div class="headpost">Section</div>
+
+            <div id="posts">
+            <div class="post">
+                <div class="post-margin">
+                <p id="recommend">Top: Today's Trending topic <i class="fa-solid fa-arrow-trend-up"></i></p>
+                <small>user826692</small>
+                <p id="comment">Can anyone tell me how to use this web?</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="panel"></div>
+  </div>
+  </div>
+
+    <script>
+    const sidebar = document.querySelector('.sidebar');
+    const toggleArea = document.querySelector('.sidebar h2');
+
+    toggleArea.addEventListener('click', (e) => {
+    e.stopPropagation();
+    sidebar.classList.toggle('collapsed');
+    });
+    </script>
 </body>
 </html>
