@@ -54,7 +54,7 @@ const upload = multer({ storage });
 
 /* ================= PAGE ROUTES ================= */
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "index.html"));
+  res.sendFile(path.join(__dirname, "/home"));
 });
 
 app.get("/home", (req, res) => {
@@ -89,7 +89,7 @@ app.get("/add-vehicle", (req, res) => {
   res.sendFile(path.join(__dirname, "public", "createvehicle.html"));
 });
 
-app.get("/style=Wfnh7Lhqm0pX4", (req, res) => {
+app.get("/style", (req, res) => {
   res.type("text/css");
   res.sendFile(path.join(__dirname, "public", "style.css"));
 });
