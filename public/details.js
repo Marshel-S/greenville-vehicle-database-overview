@@ -86,12 +86,15 @@ function renderCar(car) {
                 <div 
                   class="color-box"
                   style="background:${color.color}"
-                  onclick="changeColor('${color.image}', this)"
-                ></div>
+                  onclick="changeColor('${color.image}', this)">
+                </div>
               `).join("")
               : "<p>No colour available</p>"
           }
         </div>
+          <br>
+        <h3>About this Vehicle</h3>
+        <p>This is a car</p>
       </div>
     </div>
   `;

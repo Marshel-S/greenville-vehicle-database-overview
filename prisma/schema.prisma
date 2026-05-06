@@ -36,7 +36,7 @@ model vehicle {
   topSpeed Int
   image    String?
   authorId Int?
-  user     user?  @relation(fields: [authorId], references: [id])
+  user     user?  @relation(fields: [authorId], references: [id], onDelete: Cascade)
 }
 
 model maps {
