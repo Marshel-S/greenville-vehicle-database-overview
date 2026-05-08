@@ -269,7 +269,12 @@ app.get("/api/maps", async (req, res) => {
         place_image: true,
         place_desc: true,
         location_link_ref: true,
-        uses: true
+        uses: true,
+        category: {
+          select: {
+            place_category_desc: true
+          }
+        }
       }
     });
 

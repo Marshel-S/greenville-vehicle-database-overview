@@ -154,8 +154,13 @@ body {
   opacity: 0.8;
 }
 
-.hero button {
-  position: absolute;
+.hero-buttons {
+  display: flex;
+  gap: 22px;
+}
+
+.hero #explore {
+  position: relative;
   padding: 14px 20px;
   border: none;
   background: #3b82f6;
@@ -170,7 +175,31 @@ body {
   z-index: 100;
 }
 
-.hero button:hover {
+.hero #explore:hover {
+  color: #428aff;
+  background: transparent;
+  border: 1.5px solid #3b82f6;
+  scale: calc(1.07);
+  transition: 0.2s ease;
+}
+
+.hero #more {
+  position: relative;
+  padding: 14px 20px;
+  border: 1.5px solid #ffffff;
+  background: transparent;
+  color: white;
+  font-weight: 500;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: 0.2s ease;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  z-index: 100;
+}
+
+.hero #more:hover {
   color: #428aff;
   background: transparent;
   border: 1.5px solid #3b82f6;
@@ -309,11 +338,15 @@ body {
 }
 
 .featured {
-  padding: 40px;
+  padding: 40px 40px 40px 40px;
 }
 
 .featured h2 {
   margin-bottom: 20px;
+}
+
+.popular-car-wrapper {
+  overflow: hidden;
 }
 
 .updates {
@@ -389,6 +422,114 @@ body {
   cursor: pointer;
 }
 
+.database-card {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  overflow: hidden;
+  padding: 8px 15px;
+  height: 35vh;
+  border-radius: 16px;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  transition: 0.3s;
+}
+
+.database-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.25);
+  pointer-events: none;
+  z-index: 2;
+  transition: 0.3s ease;
+}
+
+.database-card:hover::before {
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.database-card::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  opacity: 0;
+  z-index: 1;
+  transition: 0.3s ease;
+}
+
+.database-card:hover::after {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  color: white;
+  font-weight: bold;
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 4;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.database-card:hover .overlay-text {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.overlay-text:hover {
+  color: #fbff00;
+}
+
+.database-card h2, .database-card p {
+  position: relative;
+  z-index: 10;
+}
+
+.database-card h2 {
+  margin: 10px 0 5px;
+  font-size: 20px !important;
+}
+
+.database-card p {
+  color: #22c55e;
+  margin-top: -3px;
+}
+
+.database-card span {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.database-card img {
+  margin: -20px 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+  transition: 0.3s ease;
+}
+
+.database-card:hover img {
+  scale: calc(1.1);
+  transform: translateY(-2px);
+}
+
+.database-card:hover {
+  transform: translateY(-4px);
+  cursor: pointer;
+}
+
 #price {
   margin-top: 10px;
 }
@@ -402,19 +543,19 @@ body {
 }
 
 .grid {
-  flex: 1;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  display: flex;
+  width: max-content;
   gap: 20px;
 }
 
 .card {
-  display: flex;
   position: relative;
   flex-direction: column;
   overflow: hidden;
-  padding: 8px 15px;
-  height: 35vh;
+  padding: 15px 18px;
+  min-width: 52%;
+  width: 100%;
+  height: 280px;
   border-radius: 16px;
   -webkit-user-select: none;
   -ms-user-select: none;
@@ -445,7 +586,7 @@ body {
   font-size: 18px;
   font-weight: bold;
   opacity: 0;
-  z-index: 3;
+  z-index: 1;
   transition: 0.3s ease;
 }
 
@@ -454,42 +595,20 @@ body {
   transform: translate(-50%, -50%) scale(1);
 }
 
-.overlay-text {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
-  color: white;
-  font-weight: bold;
-  opacity: 0;
-  transition: 0.3s;
-  z-index: 4; /* lebih tinggi dari overlay */
-  text-decoration: none; /* hilangkan underline */
-  cursor: pointer;
-}
-
-.card:hover .overlay-text {
-  opacity: 1;
-  transform: translate(-50%, -50%) scale(1);
-}
-
-.overlay-text:hover {
-  color: #fbff00;
-}
-
 .card h2 {
   margin: 10px 0 5px;
   font-size: 20px !important;
   z-index: 10;
 }
 
-.card h3 {
-  z-index: 10;
-}
-
 .card p {
   color: #22c55e;
   margin-top: -3px;
+  z-index: 10;
+}
+
+.card h3, .card p {
+  position: relative;
   z-index: 10;
 }
 
@@ -515,6 +634,13 @@ body {
 .card:hover {
   transform: translateY(-4px);
   cursor: pointer;
+}
+
+.database-grid {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
 }
 
 .view-all-vehicle {
@@ -1535,6 +1661,82 @@ body {
     border: 1px solid rgba(255,255,255,0.1);
     background: rgba(15,23,42,0.6);
     }
+
+.inter-job {
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.job-container {
+  display: flex;
+  width: max-content;
+  gap: 24px; /* jarak antar card */
+}
+
+.job-container:hover {
+  animation-play-state: paused;
+}
+
+/* CARD styling */
+.list-job {
+  position: relative;
+  border-radius: 12px;
+  padding: 20px;
+  min-width: 220px;
+  width: 280px;
+  min-height: 55vh;
+  flex-shrink: 0;
+  overflow: hidden;
+  justify-content: flex-start;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  transition: all 0.2s ease;
+}
+
+.list-job::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: 0.3s ease;
+}
+
+.list-job:hover::before {
+  background: rgba(0,0,0,0.2);
+  transition: 0.3s ease;
+}
+
+.list-job * {
+  position: relative;
+  z-index: 2;
+}
+
+.list-job h1 {
+  font-size: 27px;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.list-job:hover h1 {
+  text-shadow: 0 0 10px rgba(17, 24, 39, 0.8);
+  transition: 0.2s ease;
+}
+
+.list-job p {
+  color: white;
+  margin: 8px 0;
+  font-size: 15px;
+}
+
+.list-job:hover {
+  transform: scale(1.03);
+  z-index: 10;
+  cursor: pointer;
+}
+
+@keyframes scrollLoop {
+  0%   { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
 
     /* =========================
    <= 1100px (TABLET)

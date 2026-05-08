@@ -15,7 +15,7 @@
 <body>
     <h1 style="padding: 35px;">Add New Vehicle</h1>
     <div class="greenville-form-wrapper">
-    <form id="vehicleForm" action="/api/vehicles">
+    <form id="vehicleForm" action="/api/maps">
         <div class="left-form">
             <h2>ID</h2>
             <input style="cursor: not-allowed;" type="text" name="vehicle-id" id="id" placeholder="Vehicle ID will automatically filled" disabled>
@@ -85,7 +85,7 @@
 
         formData.append("image", fileInput.files[0]);
 
-        const res = await fetch("/api/vehicles", {
+        const res = await fetch("/api/maps", {
         method: "POST",
         body: formData
         });

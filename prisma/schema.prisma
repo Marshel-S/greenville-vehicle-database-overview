@@ -51,4 +51,12 @@ model maps {
   location_link_ref String? @db.Text
   place_int         Json
   place_ext         Json
+  category          mapsCategory? @relation(fields: [place_category], references: [place_category])
+}
+
+model mapsCategory {
+  place_category_id    Int    @id @default(autoincrement())
+  place_category       String? @unique
+  place_category_desc  String?
+  maps                 maps[]
 }

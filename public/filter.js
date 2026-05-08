@@ -94,7 +94,7 @@ function renderVehicles(data) {
   }
 
   container.innerHTML = data.map(v => `
-    <div class="card">
+    <div class="database-card">
       <h2>${v.car_name}</h2>
         <p>$${v.price}</p>
         <span>Top Speed: ${v.topSpeed} MPH</span>
