@@ -41,8 +41,10 @@
     <input class="search" placeholder="Look for Trending topic...">
     <ul class="menu">
         <li class="wiki-active"><i class="fa-solid fa-house-chimney"></i>Home</li>
+        <li><i class="fa-solid fa-bell"></i>Notification</li>
         <li><i class="fa-solid fa-users"></i>Community</li>
         <li><i class="fa-solid fa-hashtag"></i>Hot / Trending</li>
+        <li><i class="fa-solid fa-user"></i>Profile</li>
         <li><i class="fa-solid fa-circle-question"></i>Help</li>
     </ul>
   </div>
@@ -55,12 +57,17 @@
             <textarea id="open-discuss" placeholder="Ask something or mention '@' to open discussion.."></textarea>
             <div class="actions">
                 <button class="btn" id="add-file" type="file">
-                    <i class="fa-regular fa-square-plus"></i>
-                    Add file
+                    <i class="fa-regular fa-image"></i>
+                    Media
+                </button>
+
+                <button class="btn" id="polling">
+                    <i class="fa-solid fa-square-poll-horizontal"></i>
+                    Poll
                 </button>
 
                 <button class="btn" id="post" onclick="addPost()">
-                    <i class="fa-regular fa-circle-right"></i>
+                    Post
                 </button>
             </div>
             </div>
@@ -118,11 +125,11 @@
 
                 <div class="post-footer">
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-star"></i><p>58</p>
+                    <i class="fa-regular fa-eye" id="forum-views"></i><p>123</p>
                     </div>
 
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-eye" id="forum-views"></i><p>123</p>
+                    <i class="fa-regular fa-comment"></i><p>Comment</p>
                     </div>
 
                     <div class="post-footer-icon">
@@ -130,7 +137,47 @@
                     </div>
 
                     <div class="post-footer-icon">
+                    <i class="fa-regular fa-star"></i><p>58</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="post">
+                <div class="post-margin">
+                <p id="recommend">
+                    Top: Today's Trending topic <i class="fa-solid fa-arrow-trend-up"></i>
+                </p>
+
+                <div class="post-header">
+                    <i class="fa-solid fa-circle-user" id="user" ></i>
+                    <div class="post-info">
+                        <small>user826692</small><br>
+                        <small id="post-date">an hour ago</small>
+                    </div>
+                    <button class="like-btn">
+                    <i class="fa-regular fa-heart"></i>
+                    </button>
+                </div>
+                <div id="comment">UPDATE! Here's a bit leak of a new map! <br> What do you guys think about it?
+                </div>
+                <div id="comment-img"><img src="/images/brookmere.webp" alt=""></div>
+                </div>
+
+                <div class="post-footer">
+                    <div class="post-footer-icon">
+                    <i class="fa-regular fa-eye" id="forum-views"></i><p>123</p>
+                    </div>
+
+                    <div class="post-footer-icon">
                     <i class="fa-regular fa-comment"></i><p>Comment</p>
+                    </div>
+
+                    <div class="post-footer-icon">
+                    <i class="fa-solid fa-repeat" id="icon-repost"></i><p>Reply</p>
+                    </div>
+
+                    <div class="post-footer-icon">
+                    <i class="fa-regular fa-star"></i><p>58</p>
                     </div>
                 </div>
             </div>
@@ -149,11 +196,28 @@
 
     <script>
     const sidebar = document.querySelector('.wiki-sidebar');
+    sidebar.classList.add('collapsed');
+
     const toggleArea = document.querySelector('.wiki-sidebar h2');
 
     const btn = document.getElementById('gn-idea');
     const menu = document.getElementById('dropdownMenu');
     const icon = document.getElementById('up-down-dropdown');
+
+    const textarea = document.getElementById('open-discuss');
+    const postBtn = document.getElementById('post');
+
+    textarea.addEventListener('input', () => {
+    if (textarea.value.trim() !== '') {
+        postBtn.style.background = '#ffffff';
+        postBtn.style.color = '#0b1120';
+        postBtn.style.transition = 'background 0.1s ease, color 0.1s ease';
+    } else {
+        postBtn.style.background = '#ffffff6e';
+        postBtn.style.color = '#0b1120';
+        postBtn.style.transition = 'background 0.1s ease, color 0.1s ease';
+    }
+    });
 
     toggleArea.addEventListener('click', (e) => {
     e.stopPropagation();

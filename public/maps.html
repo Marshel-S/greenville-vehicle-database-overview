@@ -55,6 +55,11 @@ async function loadMaps() {
 
     const loadingEl = document.getElementById("loading");
 
+    if (maps.length === 0) {
+    container.innerHTML = `<p class="loading">No maps found</p>`;
+    return;
+  }
+
     const grouped = {};
     maps.forEach(map => {
       if (!grouped[map.place_category]) {
