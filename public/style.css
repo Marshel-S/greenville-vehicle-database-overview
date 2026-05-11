@@ -1357,7 +1357,7 @@ body {
     background: transparent !important;
     color: #ffffff !important;
     border: 1px solid #414651 !important;
-    border-radius: 10px;
+    border-radius: 25px;
     outline: none;
     }
 
@@ -1564,6 +1564,25 @@ body {
     background: rgba(15,23,42,0.6);
     }
 
+    .view-trending {
+    margin-top: 18px;
+    border: 2.5px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 12px;
+    width: 100%;
+    background: rgba(15,23,42,0.6);
+    color: #94a3b8;
+    transition: all 0.15s ease;
+    }
+
+    .view-trending:hover {
+    border: 2.5px solid rgba(255,255,255,0.1);
+    background: rgba(21, 32, 58, 0.6);
+    color: #acb3bd;
+    font-weight: 400;
+    cursor: pointer;
+    }
+
     .post-margin {
     margin: 2px 5px;
     }
@@ -1597,6 +1616,12 @@ body {
     color: #94a3b8;
     cursor: pointer;
     font-size: 17px;
+    transition: all 0.2s ease;
+    }
+
+    .like-btn:hover {
+    color: #ff0095;
+    transition: all 0.2s ease;
     }
 
     #post-date {
@@ -1607,39 +1632,55 @@ body {
 
     #user {
     font-size: 32px;
-    margin: 0px 2px;
+    padding: 0px 4px;
     }
 
     .post #comment {
     margin-top: 12px;
+    padding: 0 45px;
     }
 
     .post-footer {
     display: flex;
     align-items: center;
-    margin-top: 14px;
-    margin-bottom: 6px;
-    margin-left: 10px;
-    gap: 30px;
-    color: #758294;
+    gap: 16px;
+    justify-content: space-between;
+    padding: 0 41px;
     }
 
     #icon-repost {
     transform: rotate(90deg);
     }
 
-    .post-footer i {
+    .post-footer-icon {
+    display: flex;
+    padding: 10px 12px;
+    margin-top: 5px;
+    align-items: center;
+    gap: 30px;
+    color: #758294;
+    transition: all 0.15s ease;
+    }
+
+    .post-footer-icon i {
     font-size: 17px;
     line-height: 1;
     cursor: pointer;
     }
 
-    .post-footer p {
+    .post-footer-icon p {
     margin-top: 0px;
     margin-left: -20px;
     font-size: 15px;
     line-height: 1;
     cursor: pointer;
+    }
+
+    .post-footer-icon:hover {
+    background: rgba(22, 33, 59, 0.6);
+    border-radius: 8px;
+    color: #3b82f6;
+    transition: all 0.15s ease;
     }
 
     /* RIGHT */
