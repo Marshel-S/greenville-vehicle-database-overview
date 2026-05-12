@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Greenville Wiki - Notification</title>
+    <link rel="stylesheet" href="/style">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="icon" type="image/webp" href="/images/favicon.webp">
+    <style>
+    html, body {
+    height: 100%;
+    overflow: hidden;
+    }
+
+    body {
+    background: linear-gradient(#0b1120fb, #0b1120f6), url("/images/background-overview.jpg") center/cover no-repeat;
+    color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+    <nav class="navbar">
+    <div class="logo"><a href="/home">Greenville</a></div>
+    <ul class="nav-links">
+        <li><a href="/home">Home</a></li>
+        <li><a href="/maps">Map</a></li>
+        <li><a href="/vehicle">Vehicles</a></li>
+        <li><a href="/job">Jobs</a></li>
+        <li class="active">Wiki</li>
+    </ul>
+    </nav>
+
+    <div class="wiki-container">
+
+    <div class="wiki-sidebar">
+    <h2>Greenville Wiki</h2>
+    <input class="search" placeholder="Look for Trending topic...">
+    <ul class="menu">
+        <li onclick="window.location.href='/wiki'"><i class="fa-solid fa-house-chimney"></i>Home</li>
+        <li class="wiki-active"><i class="fa-solid fa-bell"></i>Notification</li>
+        <li onclick="window.location.href='/wiki/community'"><i class="fa-solid fa-users"></i>Community</li>
+        <li onclick="window.location.href='/wiki/trending'"><i class="fa-solid fa-hashtag"></i>Hot / Trending</li>
+        <li onclick="window.location.href='/wiki/profile'"><i class="fa-solid fa-user"></i>Profile</li>
+        <li onclick="window.location.href='/wiki/help'"><i class="fa-solid fa-circle-question"></i>Help</li>
+    </ul>
+  </div>
+
+    <div class="main-wrapper">
+        <div class="main">
+
+        </div>
+    </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+    <div class="panel"></div>
+  </div>
+  </div>
+
+    <script src="/wiki.js"></script>
+</body>
+</html>

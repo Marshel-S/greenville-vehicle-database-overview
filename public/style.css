@@ -376,6 +376,24 @@ body {
   color: white;
 }
 
+.add-vehicle {
+  margin-left: auto;
+  margin-right: 12px;
+  padding: 9px 12px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #090e1b;
+  font-weight: 500;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.add-vehicle:hover {
+  background: transparent;
+  border: 1.5px solid #ffffff;
+  color: #ffffff;
+}
+
 .container {
   display: flex;
   padding: 20px;
@@ -1151,6 +1169,18 @@ body {
     overflow: hidden;
     }
 
+    .sidebar-toggle {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
     .wiki-sidebar h2::after {
     content: "\f0c9";
     font-family: "Font Awesome 6 Free";
@@ -1366,13 +1396,13 @@ body {
     margin-bottom: 20px;
     background: transparent !important;
     color: #ffffff !important;
-    border: 1px solid #414651 !important;
+    border: 1px solid #b3b5b9 !important;
     border-radius: 25px;
     outline: none;
     }
 
     .search::placeholder {
-    color: #505663 !important;
+    color: #a2a7b1 !important;
     }
 
     .main-wrapper {
@@ -1588,15 +1618,16 @@ body {
     width: 100%;
     background: rgba(15,23,42,0.6);
     color: #94a3b8;
-    transition: all 0.15s ease;
+    transition: all 0.2s ease;
     }
 
     .view-trending:hover {
-    border: 2.5px solid rgba(255,255,255,0.1);
-    background: rgba(21, 32, 58, 0.6);
-    color: #acb3bd;
-    font-weight: 400;
+    border: 2.5px solid rgba(12, 21, 41, 0.466);
+    background: #eff3ff;
+    color: rgb(12, 21, 41);
+    font-weight: 500;
     cursor: pointer;
+    transition: all 0.2s ease;
     }
 
     .post-margin {
@@ -1606,6 +1637,9 @@ body {
     .post #recommend {
     color: rgba(255,255,255,0.65);
     margin-bottom: 10px;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     }
 
     #recommend i {
@@ -1617,6 +1651,11 @@ body {
     font-weight: 400;
     font-size: 17px;
     margin-left: 6px;
+    cursor: pointer;
+    }
+
+    .post small:hover {
+    text-decoration: underline;
     }
 
     .post-header {
@@ -1652,7 +1691,7 @@ body {
     }
 
     .post #comment {
-    font-size: 18px;
+    font-size: 16px;
     margin-top: 10px;
     padding: 0 51px;
     }
@@ -1663,6 +1702,9 @@ body {
     max-width: 100%;
     border-radius: 6px;
     display: block;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
     }
 
     .post-footer {
@@ -1679,26 +1721,26 @@ body {
 
     .post-footer-icon {
     display: flex;
+    position: relative;
     padding: 10px 12px;
     margin-top: 5px;
     align-items: center;
     gap: 30px;
     color: #758294;
     transition: all 0.15s ease;
+    cursor: pointer;
     }
 
     .post-footer-icon i {
     font-size: 17px;
     line-height: 1;
-    cursor: pointer;
     }
 
     .post-footer-icon p {
-    margin-top: 0px;
+    margin-top: 3px;
     margin-left: -20px;
     font-size: 15px;
     line-height: 1;
-    cursor: pointer;
     }
 
     .post-footer-icon:hover {
@@ -1706,6 +1748,46 @@ body {
     border-radius: 8px;
     color: #3b82f6;
     transition: all 0.15s ease;
+    }
+
+    .dropdown-more {
+    position: absolute;
+    bottom: 5px;
+    right: 0;
+    background: rgba(15,23,42,0.95);
+    color: #94a3b8;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 5px 8px;
+    min-width: 160px;
+    white-space: nowrap;
+    opacity: 0;
+    transform: translateY(20px);
+    pointer-events: none;
+    transition: all 0.25s ease;
+    z-index: 100;
+    }
+
+    .dropdown-more.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    }
+
+    .dropdown-more p {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      padding: 8px;
+      margin: 0;
+      line-height: 25px;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    .dropdown-more p:hover {
+    background: rgba(20, 31, 56, 0.95);
     }
 
     /* RIGHT */

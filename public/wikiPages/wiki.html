@@ -41,11 +41,11 @@
     <input class="search" placeholder="Look for Trending topic...">
     <ul class="menu">
         <li class="wiki-active"><i class="fa-solid fa-house-chimney"></i>Home</li>
-        <li><i class="fa-solid fa-bell"></i>Notification</li>
-        <li><i class="fa-solid fa-users"></i>Community</li>
-        <li><i class="fa-solid fa-hashtag"></i>Hot / Trending</li>
-        <li><i class="fa-solid fa-user"></i>Profile</li>
-        <li><i class="fa-solid fa-circle-question"></i>Help</li>
+        <li onclick="window.location.href='/wiki/notification'"><i class="fa-solid fa-bell"></i>Notification</li>
+        <li onclick="window.location.href='/wiki/community'"><i class="fa-solid fa-users"></i>Community</li>
+        <li onclick="window.location.href='/wiki/trending'"><i class="fa-solid fa-hashtag"></i>Hot / Trending</li>
+        <li onclick="window.location.href='/wiki/profile'"><i class="fa-solid fa-user"></i>Profile</li>
+        <li onclick="window.location.href='/wiki/help'"><i class="fa-solid fa-circle-question"></i>Help</li>
     </ul>
   </div>
 
@@ -66,7 +66,7 @@
                     Poll
                 </button>
 
-                <button class="btn" id="post" onclick="addPost()">
+                <button class="btn" id="post" action="/api/post" method="POST">
                     Post
                 </button>
             </div>
@@ -78,7 +78,7 @@
                 Discord
             </button>
 
-            <button class="more-btn" id="twitter">
+            <button class="more-btn" id="twitter" onclick="window.open('https://x.com/Greenville_RBLX')">
                 <i class="fa-brands fa-twitter"></i>
                 Twitter
             </button>
@@ -100,7 +100,7 @@
             </div>
             </div>
 
-            <div class="headpost">Section</div>
+            <section class="headpost">Today</section>
 
             <div id="posts">
             <div class="post">
@@ -125,19 +125,32 @@
 
                 <div class="post-footer">
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-eye" id="forum-views"></i><p>123</p>
+                    <i class="fa-regular fa-eye" id="forum-views"></i><p>5M</p>
                     </div>
 
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-comment"></i><p>Comment</p>
+                    <i class="fa-regular fa-comment"></i><p>0</p>
                     </div>
 
                     <div class="post-footer-icon">
-                    <i class="fa-solid fa-repeat" id="icon-repost"></i><p>Reply</p>
+                    <i class="fa-solid fa-repeat" id="icon-repost"></i><p>2.3k</p>
                     </div>
 
                     <div class="post-footer-icon">
                     <i class="fa-regular fa-star"></i><p>58</p>
+                    </div>
+
+                    <div class="post-footer-icon" id="dropdownMoreToggle">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="dropdown-more" id="dropdownMore">
+                        <p><i class="fa-solid fa-hand"></i>Don't Recommend me @user826692</p>
+                        <p><i class="fa-solid fa-user-plus"></i>Follow @user826692</p>
+                        <p><i class="fa-solid fa-list"></i>Remove this Post from List</p>
+                        <p><i class="fa-solid fa-bell-slash"></i>Mute</p>
+                        <p><i class="fa-solid fa-ban"></i>Block @user826692</p>
+                        <p><i class="fa-solid fa-chart-column"></i>View @user826692 Post</p>
+                        <p><i class="fa-solid fa-flag"></i>Report @user826692 Post</p>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -165,19 +178,32 @@
 
                 <div class="post-footer">
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-eye" id="forum-views"></i><p>123</p>
+                    <i class="fa-regular fa-eye" id="forum-views"></i><p>32.8k</p>
                     </div>
 
                     <div class="post-footer-icon">
-                    <i class="fa-regular fa-comment"></i><p>Comment</p>
+                    <i class="fa-regular fa-comment"></i><p>251</p>
                     </div>
 
                     <div class="post-footer-icon">
-                    <i class="fa-solid fa-repeat" id="icon-repost"></i><p>Reply</p>
+                    <i class="fa-solid fa-repeat" id="icon-repost"></i><p>12</p>
                     </div>
 
                     <div class="post-footer-icon">
                     <i class="fa-regular fa-star"></i><p>58</p>
+                    </div>
+
+                    <div class="post-footer-icon" id="dropdownMoreToggle">
+                    <i class="fa-solid fa-ellipsis"></i>
+                    <div class="dropdown-more" id="dropdownMore">
+                        <p><i class="fa-solid fa-hand"></i>Don't Recommend me @user826692</p>
+                        <p><i class="fa-solid fa-user-plus"></i>Follow @user826692</p>
+                        <p><i class="fa-solid fa-list"></i>Remove this Post from List</p>
+                        <p><i class="fa-solid fa-bell-slash"></i>Mute</p>
+                        <p><i class="fa-solid fa-ban"></i>Block @user826692</p>
+                        <p><i class="fa-solid fa-chart-column"></i>View @user826692 Post</p>
+                        <p><i class="fa-solid fa-flag"></i>Report @user826692 Post</p>
+                    </div>
                     </div>
                 </div>
             </div>
@@ -194,46 +220,11 @@
   </div>
   </div>
 
+    <script src="/wiki.js"></script>
     <script>
-    const sidebar = document.querySelector('.wiki-sidebar');
-    sidebar.classList.add('collapsed');
-
-    const toggleArea = document.querySelector('.wiki-sidebar h2');
-
-    const btn = document.getElementById('gn-idea');
-    const menu = document.getElementById('dropdownMenu');
-    const icon = document.getElementById('up-down-dropdown');
-
-    const textarea = document.getElementById('open-discuss');
-    const postBtn = document.getElementById('post');
-
-    textarea.addEventListener('input', () => {
-    if (textarea.value.trim() !== '') {
-        postBtn.style.background = '#ffffff';
-        postBtn.style.color = '#0b1120';
-        postBtn.style.transition = 'background 0.1s ease, color 0.1s ease';
-    } else {
-        postBtn.style.background = '#ffffff6e';
-        postBtn.style.color = '#0b1120';
-        postBtn.style.transition = 'background 0.1s ease, color 0.1s ease';
+    function goWikiNotification() {
+        window.location.href = "/wiki/notification";
     }
-    });
-
-    toggleArea.addEventListener('click', (e) => {
-    e.stopPropagation();
-    sidebar.classList.toggle('collapsed');
-    });
-
-    btn.addEventListener('click', (e) => {
-    e.stopPropagation();
-    menu.classList.toggle('active');
-    icon.classList.toggle('rotate');
-    });
-
-    document.addEventListener('click', () => {
-    menu.classList.remove('active');
-    icon.classList.remove('rotate');
-    });
     </script>
 </body>
 </html>

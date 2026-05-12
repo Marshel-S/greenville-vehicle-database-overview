@@ -74,7 +74,23 @@ app.get("/job", (req, res) => {
 });
 
 app.get("/wiki", (req, res) => {
-  res.sendFile(path.join(__dirname, "public", "wiki.html"));
+  res.sendFile(path.join(__dirname, "public", "/wikiPages/wiki.html"));
+});
+
+app.get("/wiki/notification", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/wikiPages/notification-wiki.html"));
+});
+
+app.get("/wiki/community", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/wikiPages/community-wiki.html"));
+});
+
+app.get("/wiki/trending", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/wikiPages/trending-wiki.html"));
+});
+
+app.get("/wiki/help", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "/wikiPages/faq-wiki.html"));
 });
 
 app.get("/details", (req, res) => {
