@@ -99,7 +99,7 @@ function renderVehicles(data) {
         <p>$${v.price}</p>
         <span>Top Speed: ${v.topSpeed} MPH</span>
         <img src="${v.image || '/images/default.jpg'}" loading="lazy" />
-        <a href="/details?id=${v.id}+name=${encodeURIComponent(v.car_name)}+category=${v.category}" class="overlay-text">
+        <a href="/details?id=${v.id}&name=${encodeURIComponent(v.car_name)}&category=${v.category}" class="overlay-text">
           View Details
         </a>
     </div>

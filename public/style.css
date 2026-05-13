@@ -1768,6 +1768,14 @@ body {
     z-index: 100;
     }
 
+    .dropdown-more.open-down {
+      transform: translateY(-10px);
+    }
+
+    .dropdown-more.open-up {
+      transform: translateY(10px);
+    }
+
     .dropdown-more.active {
     opacity: 1;
     transform: translateY(0);

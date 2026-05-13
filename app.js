@@ -159,7 +159,7 @@ app.get("/api/vehicles", async (req, res) => {
  *         description: Vehicle not found
  */
 app.get("/api/vehicles/:id", async (req, res) => {
-  const id = parseInt(req.params.id);
+  const id = req.params.id;
 
   try {
     const car = await prisma.vehicle.findUnique({
@@ -203,7 +203,7 @@ app.get("/api/vehicles/:id", async (req, res) => {
  *        - authorId
  *       properties:
  *        id:
- *          type: integer
+ *          type: string
  *        car_name:
  *          type: string
  *        brand:

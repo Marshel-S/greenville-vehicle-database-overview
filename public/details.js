@@ -104,6 +104,8 @@ window.changeColor = function(image, el) {
   const img = document.getElementById("carImage");
   if (!img || !image) return;
 
+  el.classList.add("active");
+
   img.style.opacity = 0;
 
   setTimeout(() => {

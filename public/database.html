@@ -101,7 +101,7 @@ window.addEventListener('scroll', () => {
         <p>$${vehicle.price}</p>
         <span>Top Speed: ${vehicle.topSpeed} MPH</span>
         <img src="${vehicle.image || '/images/default.jpg'}" loading="lazy" />
-        <a href="/details?id=${vehicle.id}+name=${encodeURIComponent(vehicle.car_name)}+category=${vehicle.category}" class="overlay-text">
+        <a href="/details?id=${vehicle.id}&name=${encodeURIComponent(vehicle.car_name)}&category=${vehicle.category}" class="overlay-text">
           View Details
         </a>
       `;
